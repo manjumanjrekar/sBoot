@@ -30,8 +30,15 @@ pipeline {
             steps {
                 script {
                     sh 'mvn clean install'
+                post {
+                                always {
+                                        junit 'target/surefire-reports/*.*xml'
+                                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+
                 }
             }
         }
     }
+}
+}
 }
