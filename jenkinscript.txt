@@ -7,8 +7,9 @@ pipeline {
 
     stages {
         stage('Build maven') {
-            steps {
-                // Your Maven build steps here
+            steps{
+checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjumanjrekar/sBoot.git']])
+        
             }
         }
     }
