@@ -8,8 +8,7 @@ RUN tar -xf apache-tomcat-9.0.83.tar.gz
 RUN mkdir tomcat
 RUN mv apache-tomcat-9.0.83 /tomcat/
 WORKDIR tomcat
-COPY /var/lib/jenkins/workspace/docker-pipeline/target/spring-boot-rest-example-0.5.0.war /apache-tomcat-9.0.83/webapps/
-
+COPY COPY target/spring-boot-rest-example-0.5.0.war /apache-tomcat-9.0.83/webapps/
 EXPOSE 8080
 CMD ["/tomcat/apache-tomcat-9.0.83/bin/catalina.sh", "run"]
 
