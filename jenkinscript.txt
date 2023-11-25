@@ -1,22 +1,22 @@
 pipeline {
     agent any
-         
 
-	stages {
-		stage ('build'){
-			steps {
-checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjumanjrekar/sBoot.git']])
-				sh 'mvn clean install'
-    }
-                  
+    stages {
+        stage('build') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/manjumanjrekar/sBoot.git']]])
+                sh 'mvn clean install'
             }
-stage('build docker image'){
-steps{
-script{
-sh 'docker build -t manju:1.0 .'
+        }
+
+        stage('build docker image') {
+            steps {
+                script {
+                    sh 'docker build -t manju:1.0 .'
+                }
+            }
         }
     }
 }
-}
-}
+
 
