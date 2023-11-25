@@ -20,7 +20,7 @@ stage('push image to Hub'){
 steps{
 script{
      withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-      echo "$dockerhubpwd" | docker login -u manju256 --password-stdin
+      echo "$dockerhubpwd" | docker login -u manju256 --password-dockerhubpwd
       sh 'docker login --username manju256 -p ${dockerhubpwd}'
 }
             sh 'docker push manju256/manju:1.0'
