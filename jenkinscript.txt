@@ -12,7 +12,7 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
             }
 stage('build docker image'){
 steps{
-scripts{
+script{
 sh 'docker build -t my-app-2.0-SNAPSHOT/jenk2.1.0 .'
         }
     }
