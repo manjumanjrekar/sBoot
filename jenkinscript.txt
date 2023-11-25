@@ -21,8 +21,9 @@ steps{
 script{
      withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
       sh 'docker login -u manju256/mmb7 -p ${dockerhubpwd}'
-            sh 'docker push manju:1.0'
 }
+            sh 'docker push manju256/mmb7/manju:1.0'
+
     }
 }
 }
