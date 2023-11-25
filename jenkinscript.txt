@@ -4,15 +4,13 @@ pipeline {
         maven 'maven' 
     }
 	stages {
-		stage ('build') {
+		stage ('build'){
 			steps {
+checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjumanjrekar/sBoot.git']])
 				sh 'mvn clean install'
     }
-            steps{
-checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manjumanjrekar/sBoot.git']])
-        
+                  
             }
         }
     }
-}
 
